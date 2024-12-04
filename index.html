@@ -16,6 +16,11 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #ffffff, #e6e6e6);
         }
+        .form-group {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  gap: 8px; /* Space between the input and button */
+}
 
         /* Header Styles */
         .header {
@@ -136,7 +141,7 @@
             align-items: center;
             gap: 0.5rem;
             transition: background-color 0.3s;
-            Black-space: nowrap;
+            white-space: nowrap;
         }
 
         button:hover {
@@ -163,7 +168,7 @@
         }
 
         .modal-content {
-            background-color: rgba(255, 255, 255, 0.79);
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 2rem;
             border-radius: 0.5rem;
             max-width: 400px;
@@ -196,13 +201,6 @@
             justify-content: center;
         }
 
-        .icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* Responsive Design */
         @media (max-width: 968px) {
             .main-container {
                 flex-direction: column;
@@ -236,7 +234,7 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="logo">YourLogo</div>
+        <div class="logo"><img style="max-width: 50px;" src="logo.png" alt=""></div>
         <nav class="nav-links">
             <a href="#about">About</a>
             <a href="#features">Features</a>
@@ -256,64 +254,55 @@
         <!-- Right Side - Content -->
         <section class="content-section">
             <div class="content-container">
-                <div class="logo">YourLogo</div>
+                <div class="logo"><img style="max-width: 50px;" src="logo.png" alt=""></div>
                 <h1>Copplet - A New Era for Couples!</h1>
                 <p>Copplet is a relationship wellness app designed for couples who often find themselves separated due to work or lifestyle. With a focus on communication, emotional support, and shared responsibilities, we’re creating a comprehensive platform that allows couples to feel connected even when apart.</p>
                 
-                
                 <div class="email-container">
-                    <form name="submit-to-google-sheet" id="sheetdb-form" action="https://sheetdb.io/api/v1/g2k4lpf4nmml5">
-                        
-                    <input name="data[Email]"type="email" placeholder="Enter your email">
-                    <button  type="submit">
-                        Notify Me
-                    </button>
-                </form>
+                    <form class="form-group" name="submit-to-google-sheet" id="sheetdb-form" action="https://sheetdb.io/api/v1/g2k4lpf4nmml5">
+                        <input name="data[Email]" type="email" placeholder="Enter your email">
+                        <button type="submit">
+                            Notify Me
+                        </button>
+
+                    </form>
                 </div>            
             </div>
         </section>
     </div>
-    <div class="loading js-loading is-hidden">
-        <div class="loading-spinner">
-          <svg><circle cx="25" cy="25" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg>
-        </div>
-      </div>
-  
-      <p class="js-success-message is-hidden">Success!</p>
-      <p class="js-error-message is-hidden">Error!</p>
-    </div>
+
     <!-- Subscription Modal -->
-    <div class="modal" id="subscriptionModal">
+    <!-- <div class="modal" id="subscriptionModal">
         <div class="modal-content">
             <div class="modal-header">
-                
-                <h2 class="modal-title">Subscribe for 1$?</h2>
-                <p class="modal-description">Get exclusive member discount after launch</p>
+                <h2 class="modal-title">Subscribe for $1?</h2>
+                <p class="modal-description">Get exclusive member discounts after launch</p>
             </div>
-            <form class="modal-form" >
-                <!-- <input type="email" placeholder="Your email address" required> -->
-                <button type="submit"  onclick="subscriptionForm()">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.88-11.71L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 1 0-1.41-1.41z"/>
-                    </svg>
+            <form class="modal-form">
+                <button type="submit" onclick="subscriptionForm()">
                     Pay $1 to Subscribe
                 </button>
                 <button type="submit" style="background-color: #e6e6e6; color: black;" onclick="removeModal()">
-                    <!-- <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.88-11.71L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 1 0-1.41-1.41z"/>
-                    </svg> -->
                     No Thanks
                 </button>
             </form>
         </div>
+    </div> -->
+
+    <div class="modal" id="subscriptionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Thank You For Subscribing<h2>
+                <p class="modal-description">Get exclusive member discounts after launch</p>
+            </div>
+        </div>
     </div>
 
+
+
     <script>
- 
-// Get DOM elements
 const modal = document.getElementById('subscriptionModal');
 
-// Open modal function
 function openModal() {
     modal.classList.add('active');
 }
@@ -322,98 +311,31 @@ function removeModal() {
     modal.classList.remove('active');
 }
 
-// Close modal when clicking outside
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('active');
     }
 });
 
-// Handle form submission
 function subscriptionForm() {
-    // Here you would typically:
-    // 1. Validate the email
-    // 2. Process the payment
-    // 3. Send the data to your server
     alert('Processing $1 payment for subscription...');
     modal.classList.remove('active');
 }
 
-    </script>
-    <script>
-        var form = document.getElementById('sheetdb-form');
-        form.addEventListener("submit", e => {
-          e.preventDefault();
-          fetch(form.action, {
-              method : "POST",
-              body: new FormData(document.getElementById("sheetdb-form")),
-          }).then(
-              response => response.json()
-          ).then((html) => {
-            // you can put any JS code here
-            alert('success')
-          });
-        });
-      </script>
+const form = document.getElementById('sheetdb-form');
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(document.getElementById("sheetdb-form")),
+    })
+    .then((response) => response.json())
+    .then(() => {
+        // Show the subscription modal again
+        openModal();
+    });
+});
 
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyCKH3rI_bBbPAZ1fdphFyjByZ1MgkrXZII",
-      authDomain: "copplet-405e6.firebaseapp.com",
-      projectId: "copplet-405e6",
-      storageBucket: "copplet-405e6.firebasestorage.app",
-      messagingSenderId: "1016316346985",
-      appId: "1:1016316346985:web:f375af0401125768ea58f8",
-      measurementId: "G-6N60M2KF4H"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-      <!-- <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxj59ly6OXbkXCRsIZrRj9gj_p10kra6PUqxrD_waW7cMOgEf8ZVgkmheXzUzAHT-gqmQ/exec'
-        const form = document.forms['submit-to-google-sheet']
-        const loading = document.querySelector('.js-loading')
-        const successMessage = document.querySelector('.js-success-message')
-        const errorMessage = document.querySelector('.js-error-message')
-    
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          showLoadingIndicator()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => showSuccessMessage(response))
-            .catch(error => showErrorMessage(error))
-        })
-    
-        function showLoadingIndicator () {
-          form.classList.add('is-hidden')
-          loading.classList.remove('is-hidden')
-        }
-    
-        function showSuccessMessage (response) {
-          console.log('Success!', response)
-          setTimeout(() => {
-            successMessage.classList.remove('is-hidden')
-            loading.classList.add('is-hidden')
-          }, 500)
-        }
-    
-        function showErrorMessage (error) {
-          console.error('Error!', error.message)
-          setTimeout(() => {
-            errorMessage.classList.remove('is-hidden')
-            loading.classList.add('is-hidden')
-          }, 500)
-        }
-      </script> -->
+    </script>
 </body>
 </html>
