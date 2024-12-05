@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body {
@@ -21,6 +24,36 @@
   align-items: center; /* Vertically align items */
   gap: 8px; /* Space between the input and button */
 }
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: Adds a slight slide effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in animation to elements */
+.fade-in {
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1s ease-in forwards; /* Fade in over 1 second */
+}
+
+/* Delay or staggered effect for children elements */
+.fade-in:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.fade-in:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.fade-in:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
 
         /* Header Styles */
         .header {
@@ -78,9 +111,8 @@
             padding: 20px;
             max-width: fit-content;
             aspect-ratio: 4/3;
-            background: url('/api/placeholder/600/450') center/cover;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+           
+            
         }
 
 
@@ -94,15 +126,25 @@
 }
 
 #home {
-    opacity: 1;
+    width: 250px; 
+    z-index: 2;
+    opacity: 0;
 }
 
 #notes {
     transform: translateX(200px); /* Initial position for animation */
+    width: 230px; 
+    padding-bottom: inherit;
+     opacity: 0; 
+     z-index: 1;
 }
 
 #calendar {
     transform: translateX(-200px); /* Initial position for animation */
+    width: 230px; 
+    padding-bottom: inherit; 
+    opacity: 0;
+    z-index: 1;
 }
 
         .content-section {
@@ -117,6 +159,9 @@
             max-width: 500px;
             width: 100%;
             text-align: left;
+        }
+        .custom-font{
+            font-family: "Playwrite HR Lijeva", cursive;
         }
 
         h1 {
@@ -144,6 +189,13 @@
             .email-container {
                 flex-direction: row;
             }
+            h1 {
+            font-size: 3.5rem;
+            color: Black;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+      
+        }
         }
 
         input[type="email"] {
@@ -213,7 +265,7 @@
 
         .modal-description {
             color: #6b7280;
-            font-size: 0.875rem;
+            font-size: 1rem;
         }
 
         .modal-form {
@@ -226,11 +278,60 @@
             width: 100%;
             justify-content: center;
         }
+        @media (min-width: 968px) {
+        #mob-h1{
+            display: none;
+        }
+    }
 
         @media (max-width: 968px) {
             .main-container {
                 flex-direction: column;
             }
+            #mob-hide {
+                font-size: 2.5rem;
+                display: none;
+            }
+
+            #home {
+    width: 100px; 
+    z-index: 2;
+    opacity: 0;
+}
+
+#notes {
+    transform: translateX(200px); /* Initial position for animation */
+    width: 85px; 
+    padding-bottom: inherit;
+     opacity: 0; 
+     z-index: 1;
+}
+
+#calendar {
+    transform: translateX(-200px); /* Initial position for animation */
+    width: 85px; 
+    padding-bottom: inherit; 
+    opacity: 0;
+    z-index: 1;
+}
+.header{
+    padding-left: 15px;
+}
+
+#mob-h1 {
+    font-size: 1.5rem;
+margin: 20px;
+text-align: center;
+
+}
+
+p {
+            color: #2d2e2f;
+            font-size: 1rem;
+        }
+.logo-bot {
+    display: none;
+}
 
             .image-section, .content-section {
                 flex: none;
@@ -238,21 +339,18 @@
             }
 
             .content-container {
-                text-align: center;
+                text-align: start;
             }
 
             .email-container {
-                justify-content: center;
+                justify-content: start;
             }
         }
 
         @media (max-width: 640px) {
+            
             .nav-links {
                 display: none;
-            }
-
-            h1 {
-                font-size: 2.5rem;
             }
         }
     </style>
@@ -269,27 +367,31 @@
     </header>
 
     <!-- Main Content -->
-    <div class="main-container">
-        <!-- Left Side - Image -->
+    <div class="main-container fade-in">
+
+        <h1 id="mob-h1">Copplet - A New Era for <br><span class="custom-font">Couples</span>!</h1>
         <section class="image-section">
+            
             <div class="image-container">
-                <img id="notes" src="Notes-portrait.png" alt="Notes" style="width: 230px; padding-bottom: inherit; opacity: 0; z-index: 1;">
-                <img id="home" src="Home-portrait.png" alt="Home" style="width: 250px; z-index: 2;opacity: 0;">
-                <img id="calendar" src="calender.png" alt="Calendar" style="width: 230px; padding-bottom: inherit; opacity: 0;z-index: 1;">
+                
+                <img id="notes" src="Notes-portrait.png" alt="Notes" >
+                <img id="home" src="Home-portrait.png" alt="Home">
+                <img id="calendar" src="calender.png" alt="Calendar" >
             </div>
         </section>
 
         <!-- Right Side - Content -->
         <section class="content-section">
             <div class="content-container">
-                <div class="logo"><img style="max-width: 50px;" src="logo.png" alt=""></div>
-                <h1>Copplet - A New Era for Couples!</h1>
+                <div class="logo logo-bot"><img style="max-width: 50px;" src="logo.png" alt=""></div>
+                <h1 id="mob-hide">Copplet - A New Era for  <span class="custom-font">Couples</span>!</h1>
+                
                 <p>Copplet is a relationship wellness app designed for couples who often find themselves separated due to work or lifestyle. With a focus on communication, emotional support, and shared responsibilities, we’re creating a comprehensive platform that allows couples to feel connected even when apart.</p>
                 
                 <div class="email-container">
                     <form class="form-group" name="submit-to-google-sheet" id="sheetdb-form" action="https://sheetdb.io/api/v1/g2k4lpf4nmml5">
                         <input name="data[Email]" type="email" placeholder="Enter your email">
-                        <button type="submit">
+                        <button type="submit" style="background-color: #24a0ed; color: rgb(255, 255, 255);">
                             Notify Me
                         </button>
 
@@ -387,6 +489,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000); // Starts after "Notes" animation
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll(); // Initial check in case elements are already in view
+});
 
 
     </script>
